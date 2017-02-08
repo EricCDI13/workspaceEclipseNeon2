@@ -1,0 +1,29 @@
+<taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+	version="2.1">
+
+	<description>tags de l'imie</description>
+	<tlib-version>1.1</tlib-version>
+	<short-name>imie</short-name>
+
+	<tag>
+		<name>somme</name>
+		<tag-class>fr.imie.cours.SommeTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<name>a</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>b</name>
+			<required>true</required>
+		</attribute>
+	</tag>
+
+	<!-- <tag> -->
+	<!-- <name>table</name> -->
+	<!-- <tag-class></tag-class> -->
+	<!-- <body-content></body-content> -->
+	<!-- </tag> -->
+
+</taglib>

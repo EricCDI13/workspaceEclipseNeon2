@@ -10,8 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/tpjsp")
-public class TPJSP extends HttpServlet {
+@WebServlet("/index")
+public class index extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2818085798765037514L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -21,12 +26,12 @@ public class TPJSP extends HttpServlet {
 		session.setAttribute("p2", person);
 
 		request.setAttribute("nbMax", request.getParameter("nbMax"));
-		// request.setAttribute("listeSaisons", Arrays.asList("printemps", "été", "automne",
-		// "hiver"));
+		// request.setAttribute("listeSaisons", Arrays.asList("printemps",
+		// "Ã©tÃ©", "automne", "hiver"));
 		request.setAttribute("toto", "");
 		request.setAttribute("listeSaisons", Arrays.asList());
 
-		request.getRequestDispatcher("/tpjsp.jsp").forward(request, response);
+		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

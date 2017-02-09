@@ -12,6 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/forward")
 public class ForwardServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
@@ -19,7 +24,7 @@ public class ForwardServlet extends HttpServlet {
 		request.setAttribute("prenom", "tony");
 		request.setAttribute("nom", "parker");
 		request.getRequestDispatcher("/servletb").forward(request, response);
-		out.println("<p>après forward</p>");
+		out.println("<p>aprï¿½s forward</p>");
 	}
 
 }

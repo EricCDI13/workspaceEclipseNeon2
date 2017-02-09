@@ -5,43 +5,57 @@
 <%@ page import="java.time.format.*"%>
 <%@ page import="java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="/WEB-INF/tld/imie.tld" prefix="imie" %>
+<%@ taglib uri="/WEB-INF/tld/imie.tld" prefix="imie"%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>TP cours JSP Servlet</title>
+<link rel="stylesheet" href="index.css" type="text/css">
 </head>
 <body>
 
+	<h1>Commentaires</h1>
+	<br />
 	<!-- commentaire visible par le nav -->
+
+	Commentaires via scriptlet
+	<br />
 	<%-- commentaire invisible --%>
 
+	<!-- Déclaration dans les deux modes -->
 	<%
-		String test = "test";
+		String test = "Affichage via une var en scriplet \"express <%\"";
 	%>
+	<jsp:scriptlet>String test2 = "Affichage via une var en scriplet \"verbeux jsp scriptlet jsp expression \"";</jsp:scriptlet>
+
+	<!-- Commentaires dans les deux modes -->
 	<%=test%><br />
-
-	<jsp:scriptlet>String test2 = "test2";</jsp:scriptlet>
 	<jsp:expression>test2</jsp:expression><br />
-
-	<%!String var_instance = "instance";%>
-	<jsp:declaration>String var_instance2 = "instance";</jsp:declaration>
-
-	<%-- <jsp:scriptlet> --%>
-	// Person p1 = (Person) session.getAttribute("p1"); // if ( p1 == null
-	) { // p1 = new Person(); // session.setAttribute("p1", p1); // }
-	<%-- </jsp:scriptlet> --%>
-	<%-- <jsp:expression>p1.getLastName()</jsp:expression> --%>
-
-	<%-- <jsp:useBean id="p2" class="fr.imie.cours.Person" scope="session" /> --%>
-	<%-- <jsp:getProperty name="p2" property="firstName" /> --%>
-
-	${p2.firstName} Bonjour
+   
+	<h1>Affiche property interne (User.name)</h1>
+	<br /> Bonjour
+	<!-- Formunaire saisie simple nom/prénom -->
 	<%=System.getProperty("user.name")%><br />
-	<form>
+	<form> 
 		prenom : <input name="prenom" /><br /> nom : <input name="nom" /><br />
 		<input type="submit" /><br />
 	</form>
+
+	<h1>Injection de code</h1>
+	<!-- Déclaration dans les deux modes -->
+	<%!String var_instance = "instance";%>
+	<jsp:declaration>String var_instance2 = "instance";</jsp:declaration>
+
+	<h1>Affichage attribut P1</h1>
+	<jsp:scriptlet> Person p1 = (Person) session.getAttribute("p1"); if ( p1 == null) {
+	p1 = new Person(); session.setAttribute("p1", p1); } </jsp:scriptlet>
+	<jsp:expression>p1.getLastName()</jsp:expression>
+
+	<h1>Beans</h1>
+	<jsp:useBean id="p2" class="fr.imie.cours.Person" scope="session" />
+	<jsp:getProperty name="p2" property="firstName" />
+	${p2.firstName}
+
 
 	<br />TP jsp 1 ex 2
 	<br />
@@ -94,7 +108,8 @@
 
 		newDateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss", Locale.FRENCH);
 
-		newDateFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.MEDIUM).withLocale(Locale.FRENCH);
+		newDateFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.MEDIUM)
+				.withLocale(Locale.FRENCH);
 
 		oldDateJour = new Date();
 		newDateJour = LocalDateTime.now();
